@@ -35,7 +35,7 @@
   "author": "Holepunch",
   "license": "Apache-2.0",
   "dependencies": {
-    "bare-foundation-registry": "^1.0.0"
+    "bare-foundation-registry": "^0.1.0"
   },
   "devDependencies": {
     "brittle": "^3.18.0",
