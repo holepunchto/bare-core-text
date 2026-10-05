@@ -24,14 +24,19 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-latest
-            platform: linux
           - os: macos-latest
             platform: darwin
-          - os: windows-latest
-            platform: win32
+            arch: arm64
+          - os: macos-latest
+            platform: ios
+            arch: arm64
     runs-on: ${{ matrix.os }}
-    name: Test / ${{ matrix.platform }}
+    name: Test / ${{ matrix.platform }}-${{ matrix.arch }}
     steps:
       - uses: holepunchto/actions/bare-base@v1
+      - uses: holepunchto/actions/compile-prebuilds@v1
+        with:
+          platform: ${{ matrix.platform }}
+          arch: ${{ matrix.arch }}
+          flags: --debug
       - run: npm test
