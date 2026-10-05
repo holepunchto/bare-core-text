@@ -4,10 +4,7 @@ import { tag, handle, Handle, Wrapper } from 'bare-foundation-registry'
  * Measures text with Core Text. A framesetter remembers the last text it measured, so measuring
  * the same text at several sizes is cheap.
  */
-declare class CoreTextFramesetter {
-  /** Create a new framesetter. */
-  constructor()
-
+interface CoreTextFramesetter {
   /**
    * Measure `string` in one font, fitted into `width` by `height` points.
    * @param font - The font `family`, or `null` for the system font, and its `size` in points.
@@ -31,7 +28,13 @@ declare class CoreTextFramesetter {
   measureAttributed(text: Wrapper, width?: number, height?: number): CoreTextFramesetter.Measurement
 
   readonly [tag]: number
+
   readonly [handle]: Handle
+}
+
+declare class CoreTextFramesetter {
+  /** Create a new framesetter. */
+  constructor()
 }
 
 declare namespace CoreTextFramesetter {
